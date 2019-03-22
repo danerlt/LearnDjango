@@ -9,6 +9,7 @@ from django.shortcuts import render
 
 from .models import Student
 from .forms import StudentForm
+import json
 
 
 def index(request):
@@ -17,6 +18,9 @@ def index(request):
         form = StudentForm(request.POST)
         if form.is_valid():
             cleaned_data = form.cleaned_data
+            print('cleaned_data:%s' % vars(cleaned_data))
+            body = json.loads(request.body)
+            print('body:%s' % body)
             student = Student()
             student.name = cleaned_data['name']
             student.sex = cleaned_data['sex']
