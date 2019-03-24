@@ -6,6 +6,7 @@
     <img src="https://travis-ci.org/Lt-grint/LearnDjango.svg?branch=master" alt="Build Status">
 </a>
 </p>
+
 ## 如何运行
 ### 安装Django
 使用pip，推荐使用conda。
