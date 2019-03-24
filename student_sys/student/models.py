@@ -22,7 +22,7 @@ class Student(models.Model):
     qq = models.CharField(max_length=MAX_CHAR_FIELD_LENGTH, verbose_name='QQ')
     phone = models.CharField(
         max_length=MAX_CHAR_FIELD_LENGTH, verbose_name="电话")
-    status = models.IntegerField(choices=STATUS_ITEMS, verbose_name="审核状态")
+    status = models.IntegerField(choices=STATUS_ITEMS, verbose_name="审核状态", default=STATUS_ITEMS[0][0], null=True)
     created_time = models.DateTimeField(
         auto_now_add=True, editable=False, verbose_name="创建时间")
 

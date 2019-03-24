@@ -16,10 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url
-from student.views import index
-
+from student.views import IndexView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url('^$', index, name="index")
+    url('^$', IndexView.as_view(), name="index")
 ]

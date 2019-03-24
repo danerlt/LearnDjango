@@ -6,21 +6,33 @@ from __future__ import unicode_literals
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.shortcuts import render
+from django.views import View
 
 from .models import Student
 from .forms import StudentForm
 import json
 
+class IndexView(View):
+    template_name = 'index.html'
+    def get_context(self):
+        students = Student.objects.all()
+        context = {
+            'students': students
+        }
+        return context
 
-def index(request):
-    students = Student.objects.all()
-    if request.method == 'POST':
-        form = StudentForm(request.POST)
+    def get(self, request):
+        context = self.get_context()
+        form = StudentForm()
+        context.update({
+            'form':form
+        })
+        return render(request, self.template_name, context=context)
+
+    def post(self, request):
+        form = StudentForm(request.POST)   
         if form.is_valid():
             cleaned_data = form.cleaned_data
-            print('cleaned_data:%s' % vars(cleaned_data))
-            body = json.loads(request.body)
-            print('body:%s' % body)
             student = Student()
             student.name = cleaned_data['name']
             student.sex = cleaned_data['sex']
@@ -29,12 +41,10 @@ def index(request):
             student.qq = cleaned_data['qq']
             student.phone = cleaned_data['phone']
             student.save()
-            return HttpResponseRedirect(reverse('index'))
-    else:
-        form = StudentForm()
-
-    context = {
-        'students': students,
-        'form': form,
-    }
-    return render(request, 'index.html', context=context)
+            return HttpResponseRedirect(reverse('index'))     
+        else:
+            context = self.get_context()
+            context.update({
+                'form':form
+            })
+            return render(request, self.template_name, context=context)    
