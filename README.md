@@ -1,7 +1,11 @@
 # LearnDjango
 记录下学习Django框架写下的一些代码记录,Django版本为2.0，Python版本3.6.
 目前正在看[@the5fire](https://github.com/the5fire)写的[《Django企业开发实战》](https://github.com/the5fire/django-practice-book)
-
+<p>
+<a href="https://travis-ci.org/Lt-grint/LearnDjango/">
+    <img src="https://travis-ci.org/Lt-grint/LearnDjango.svg?branch=master" alt="Build Status">
+</a>
+</p>
 ## 如何运行
 ### 安装Django
 使用pip，推荐使用conda。
