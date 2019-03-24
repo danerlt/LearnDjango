@@ -4,7 +4,7 @@ python:
 env:
     - DJANGO=2.0
 install:
-    - pip install Django=$DJANGO
+    - pip install Django==$DJANGO
     - pip install pep8
 before_script:
     - "pep8 --exclude=migrations --ignore=E501,E225 src"
