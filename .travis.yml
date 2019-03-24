@@ -4,10 +4,10 @@ python:
 env:
     - DJANGO=2.0
 install:
-    - pip install -r requirements.txt
+    - pip install Django==$DJANGO
+    - pip install flake8
+    - pip install codecov
 
-before_script:
-    - "pep8 --exclude=migrations --ignore=E501,E225 student_sys"
 script:
     - "flake8 --show-source student_sys" 
 after_success:
